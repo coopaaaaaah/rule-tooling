@@ -17,6 +17,10 @@ uv sync
 This will create a local-only directory called "converted_rules" with the "env".json file of the rules that were converted. This is a time to review changes. 
 ```
   uv run python main.py --env stg --fetch
+```
+
+Fetch by specific org (expected future use)
+```
   uv run python main.py --env stg --org-id 1553 --fetch
 ```
 
