@@ -1,0 +1,44 @@
+ENV_MAP = {
+    'stg': {
+        'DB_HOST': '',
+        'DB_PORT': '',
+        'DB_NAME': '',
+        'DB_USER': '',
+        'DB_PASSWORD': ''
+    },
+    'sandbox1': {
+        'DB_HOST': '',
+        'DB_PORT': '',
+        'DB_NAME': '',
+        'DB_USER': '',
+        'DB_PASSWORD': ''
+    },
+    'eu-sandbox1': {
+        'DB_HOST': '',
+        'DB_PORT': '',
+        'DB_NAME': '',
+        'DB_USER': '',
+        'DB_PASSWORD': ''
+    },
+    'prod1': {
+        'DB_HOST': '',
+        'DB_PORT': '',
+        'DB_NAME': '',
+        'DB_USER': '',
+        'DB_PASSWORD': ''
+    },
+    'prod2': {
+        'DB_HOST': '',
+        'DB_PORT': '',
+        'DB_NAME': '',
+        'DB_USER': '',
+        'DB_PASSWORD': ''
+    },
+    'eu-prod1': {
+        'DB_HOST': '',
+        'DB_PORT': '',
+        'DB_NAME': '',
+        'DB_USER': '',
+        'DB_PASSWORD': ''
+    },
+}
