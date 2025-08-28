@@ -12,7 +12,6 @@ Convert facts with `sender_receiver` to `perspectives` on rules and write update
       * "sender_receiver" -> both of the above
     - Merge into existing `perspectives` (if any), de-duplicate
     - Set `fact["type"] = "MULTIPLE_PERSPECTIVES_AGGREGATION"`
-    - Remove `sender_receiver`
 - Writes merged output to converted_rules/<env>.json (merged by rule id)
 - Can apply env updates back to DB; if rule.status = VALIDATION, update latest rule_validation.rule_content
 - Can restore DB contents from backups stored under backups/<env>/<timestamp>/
