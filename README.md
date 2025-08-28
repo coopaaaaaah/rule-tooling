@@ -1,5 +1,7 @@
 # Rule Tooling
 
+This tool will convert DMB rules with EVENT_BY_OBJECT_FACTS `sender_receiver` props to `perspectives`. 
+
 # Basic flow for rule migrations
 <img width="334" height="104" alt="image" src="https://github.com/user-attachments/assets/06b68a88-90a1-4ae2-973a-98c44597d9d6" />
 
