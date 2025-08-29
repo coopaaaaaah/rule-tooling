@@ -162,11 +162,12 @@ def convert_fact(fact: Dict[str, Any]) -> bool:
     if fact.get("type") == "ENTITY_VALUE_FACT" or fact.get("event_subtype") == "ACTION_EVENT":
         return False
 
+    object = fact.get("object")
     perspectives: List[Dict[str, str]] = []
     if sr in ("sender", "sender_or_receiver"):
-        perspectives.append(to_perspective_object("sender_entity_id"))
+        perspectives.append(to_perspective_object("sender_entity_id") if object == "ENTITY" else to_perspective_object("sender_instrument_id"))
     if sr in ("receiver", "sender_or_receiver"):
-        perspectives.append(to_perspective_object("receiver_entity_id"))
+        perspectives.append(to_perspective_object("receiver_entity_id") if object == "ENTITY" else to_perspective_object("receiver_instrument_id"))
 
     fact["perspectives"] = perspectives
     fact["type"] = "MULTIPLE_PERSPECTIVES_AGGREGATION"
