@@ -105,10 +105,10 @@ def normalize_sender_receiver(value: Any) -> Optional[str]:
     if not isinstance(value, str):
         return None
     v = value.strip().lower()
-    if v in ("sender", "receiver", "sender_receiver"):
+    if v in ("sender", "receiver", "sender_or_receiver"):
         return v
-    if v == "senderreceiver" or v == "both" or v == "sender_and_receiver":
-        return "sender_receiver"
+    if v == "senderreceiver" or v == "both" or v == "sender_or_receiver":
+        return "sender_or_receiver"
     if v == "s":
         return "sender"
     if v == "r":
@@ -159,14 +159,16 @@ def convert_fact(fact: Dict[str, Any]) -> bool:
     if not sr:
         return False
 
-    additions: List[Dict[str, str]] = []
-    if sr in ("sender", "sender_receiver"):
-        additions.append(to_perspective_object("sender_entity_id"))
-    if sr in ("receiver", "sender_receiver"):
-        additions.append(to_perspective_object("receiver_entity_id"))
+    if fact.get("type") == "ENTITY_VALUE_FACT" or fact.get("event_subtype") == "ACTION_EVENT":
+        return False
 
-    existing = fact.get("perspectives") if isinstance(fact.get("perspectives"), list) else []
-    fact["perspectives"] = merge_perspectives(existing, additions)
+    perspectives: List[Dict[str, str]] = []
+    if sr in ("sender", "sender_or_receiver"):
+        perspectives.append(to_perspective_object("sender_entity_id"))
+    if sr in ("receiver", "sender_or_receiver"):
+        perspectives.append(to_perspective_object("receiver_entity_id"))
+
+    fact["perspectives"] = perspectives
     fact["type"] = "MULTIPLE_PERSPECTIVES_AGGREGATION"
     return True
 
